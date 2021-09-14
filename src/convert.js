@@ -15,7 +15,7 @@ class FromCurrency extends React.Component {
   render() {
     const { value, onChange, posts } = this.props;
     
-    const currencySelections = posts.map(current => <option  value={current}> {current} </option>);
+    const currencySelections = posts.map(current => <option key={current}  value={current}> {current} </option>);
     return (
       <select id="fromCurrrency" name="fromCurrency" value={value} onChange={onChange} >{currencySelections}</select>
     )
@@ -26,7 +26,7 @@ class ToCurrency extends React.Component {
   render() {
     const { value, onChange, posts } = this.props;
     
-    const currencySelections = posts.map(current => <option  value={current}> {current} </option>);
+    const currencySelections = posts.map(current => <option key={current} value={current}> {current} </option>);
     return (
       <select id="toCurrrency" name="toCurrency" value={value} onChange={onChange} >{currencySelections}</select>
     )
@@ -43,6 +43,29 @@ class Convert extends React.Component {
   }
 }
 
+class Conversion extends React.Component {
+  render() {
+
+ console.log(this.props.results.rates)
+ const {rates} = this.props.results;
+ console.log(rates);
+ let rate = [];
+ for (const property in rates) {rate.push(property, parseFloat(rates[property]).toFixed(2))
+
+  };
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-8 col-md-9 mb-3">
+          <h4>{rate[0]} | {rate[1]}</h4>
+        </div>
+      </div>
+    </div>
+  )}
+  }
+
+
 class SimpleForm extends React.Component {
   constructor(props) {
     super(props);
@@ -51,7 +74,7 @@ class SimpleForm extends React.Component {
       fromCurrency: 'USD',
       toCurrency: 'GBP',
       error: '',
-      results: '',
+      results: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -69,7 +92,6 @@ class SimpleForm extends React.Component {
         throw new Error(data.Error);
       }
       this.setState({ results: data, error: '' });
-      console.log(this.state)
     })
     .catch((error) => {
       this.setState({ error: error.message });
@@ -83,15 +105,18 @@ class SimpleForm extends React.Component {
   }
 
   render() {
-    const { fromCurrency, toCurrency, amount } = this.state;
-    console.log(fromCurrency);
-    console.log(toCurrency)
+    const { fromCurrency, toCurrency, amount, results, error } = this.state;
+ 
+ 
   
     return <div>
     <SimpleInput value={amount} onChange={this.handleChange} />
     <FromCurrency posts={currencies} value={fromCurrency} onChange={this.handleChange}/>
     <ToCurrency posts={currencies} value={toCurrency} onChange={this.handleChange}/>
     <Convert onClick={this.handleSubmit} />
+    <div>
+     <Conversion results={results} />
+   </div>
     </div>
   }
 }
