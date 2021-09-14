@@ -11,26 +11,14 @@ class SimpleInput extends React.Component {
   }
 }
 
-class FromCurrency extends React.Component {
+class CurrencyList extends React.Component {
   render() {
-    const { value, onChange, posts } = this.props;
-    
-    const currencySelections = posts.map(current => <option key={current}  value={current}> {current} </option>);
-    return (
-      <select id="fromCurrrency" name="fromCurrency" value={value} onChange={onChange} >{currencySelections}</select>
-    )
-
-  }
-}
-class ToCurrency extends React.Component {
-  render() {
-    const { value, onChange, posts } = this.props;
+    const {name, value, onChange, posts } = this.props;
     
     const currencySelections = posts.map(current => <option key={current} value={current}> {current} </option>);
     return (
-      <select id="toCurrrency" name="toCurrency" value={value} onChange={onChange} >{currencySelections}</select>
+      <select name={name} value={value} onChange={onChange}> {currencySelections} </select>
     )
-
   }
 }
 
@@ -42,16 +30,21 @@ class Convert extends React.Component {
     )
   }
 }
+class SwitchCurrencies extends React.Component {
+  render() {
+    const {onClick} = this.props;
+    return (
+      <button type="submit" onClick={onClick} className="btn btn-primary">switch</button>
+    )
+  }
+}
 
 class Conversion extends React.Component {
   render() {
 
- console.log(this.props.results.rates)
  const {rates} = this.props.results;
- console.log(rates);
  let rate = [];
  for (const property in rates) {rate.push(property, parseFloat(rates[property]).toFixed(2))
-
   };
 
   return (
@@ -64,7 +57,6 @@ class Conversion extends React.Component {
     </div>
   )}
   }
-
 
 class SimpleForm extends React.Component {
   constructor(props) {
@@ -79,6 +71,7 @@ class SimpleForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handle = this.handle.bind(this);
   }
 
   handleSubmit(event) {
@@ -98,6 +91,11 @@ class SimpleForm extends React.Component {
       console.log(error);
     })
   }
+  handle(event) {
+    event.preventDefault();
+    let {fromCurrency, toCurrency} = this.state;
+    this.setState({"fromCurrency": [toCurrency], "toCurrency": [fromCurrency]})
+  }
 
   handleChange(event) {
     const { name, value } = event.target;
@@ -107,13 +105,12 @@ class SimpleForm extends React.Component {
   render() {
     const { fromCurrency, toCurrency, amount, results, error } = this.state;
  
- 
-  
     return <div>
     <SimpleInput value={amount} onChange={this.handleChange} />
-    <FromCurrency posts={currencies} value={fromCurrency} onChange={this.handleChange}/>
-    <ToCurrency posts={currencies} value={toCurrency} onChange={this.handleChange}/>
+    <CurrencyList name='fromCurrency' posts={currencies} value={fromCurrency} onChange={this.handleChange}/>
+    <CurrencyList name="toCurrency" posts={currencies} value={toCurrency} onChange={this.handleChange}/>
     <Convert onClick={this.handleSubmit} />
+    <SwitchCurrencies onClick={this.handle} />
     <div>
      <Conversion results={results} />
    </div>
