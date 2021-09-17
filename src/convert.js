@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { json, checkStatus } from './utils';
+import { ExchangeRates } from './exchangeRates';
+
 
 let currencies = ["USD","AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HKD","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","ZAR"];
 
 class SimpleInput extends React.Component {
   render() {
-    const { value, onChange } = this.props;
-    return <input name="amount" value={value} onChange={onChange} type="number"/>
+    const { value, onChange, type } = this.props;
+    return <input name="amount" value={value} onChange={onChange} type={type}/>
   }
 }
 
@@ -67,11 +69,14 @@ class SimpleForm extends React.Component {
       toCurrency: 'GBP',
       error: '',
       results: [],
+      exchangeRates: '',
+      baseCurrency: 'USD',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handle = this.handle.bind(this);
+    this.checkCurrencies = this.checkCurrencies.bind(this);
   }
 
   handleSubmit(event) {
@@ -91,6 +96,7 @@ class SimpleForm extends React.Component {
       console.log(error);
     })
   }
+
   handle(event) {
     event.preventDefault();
     let {fromCurrency, toCurrency} = this.state;
@@ -102,21 +108,41 @@ class SimpleForm extends React.Component {
     this.setState({ [name]: value });
   }
 
+  checkCurrencies(event) {
+    let {fromCurrency} = this.state;
+    fetch(`https://altexchangerateapi.herokuapp.com/latest?from=${fromCurrency}`)
+    .then(checkStatus)
+    .then(json)
+    .then((data) => {
+      if (data.Response === 'False') {
+        throw new Error(data.Error);
+      }
+      this.setState({ exchangeRates: data, error: '' });
+    })
+    .catch((error) => {
+      this.setState({ error: error.message });
+      console.log(error);
+    })
+  }
+
   render() {
-    const { fromCurrency, toCurrency, amount, results, error } = this.state;
- 
+    const { fromCurrency, toCurrency, amount, results, error, exchangeRates } = this.state;
+
     return <div>
-    <SimpleInput value={amount} onChange={this.handleChange} />
+    <SimpleInput  type="number" value={amount} onChange={this.handleChange} />
     <CurrencyList name='fromCurrency' posts={currencies} value={fromCurrency} onChange={this.handleChange}/>
     <CurrencyList name="toCurrency" posts={currencies} value={toCurrency} onChange={this.handleChange}/>
     <Convert onClick={this.handleSubmit} />
     <SwitchCurrencies onClick={this.handle} />
-    <div>
-     <Conversion results={results} />
+    <Conversion results={results} />
+    <SimpleInput name='baseCurrency' value={fromCurrency} onChange={this.handleChange} />
+    <Convert onClick={this.checkCurrencies} />
+    <ExchangeRates rates={exchangeRates}/>
    </div>
-    </div>
   }
 }
 
 export default SimpleForm;
+
+
 
