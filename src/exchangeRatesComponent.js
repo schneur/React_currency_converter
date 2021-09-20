@@ -8,9 +8,9 @@ const ExchangeRates = (props) => {
     return null;
   }
 
-  const content = Object.keys(rates).map((post,index) =>
-  <div key={post}>
-    <p>{post} - {rates[post]}</p>
+  const content = Object.keys(rates).map((current,index) =>
+  <div key={current}>
+    <p>{current} - {rates[current].toFixed(2)}</p>
   </div>
 );
 
