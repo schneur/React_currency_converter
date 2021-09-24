@@ -9,13 +9,15 @@ const ExchangeRates = (props) => {
   }
 
   const content = Object.keys(rates).map((current,index) =>
-  <div key={current}>
-    <p>{current} - {rates[current].toFixed(2)}</p>
+   
+  <div className="col-12 col-sm-6" key={current}>
+    <p>{current} : {rates[current].toFixed(2)}</p>
   </div>
+  
 );
 
   return (
-    <div>
+    <div className='row justify-content-center pt-5 mt-5'>
       {content}
     </div>
   );

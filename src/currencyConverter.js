@@ -4,6 +4,7 @@ import { CurrencyList } from './currenciesList';
 import { SimpleInput } from './simpleInput';
 import { SwapCurrencies } from './switchCurrencies';
 import { Conversion } from './ConversionComponent';
+import './currencyConverter.css';
 
 let currencies = ["USD","AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HKD","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","ZAR"];
 
@@ -58,16 +59,30 @@ class CurrencyConverter extends React.Component {
   }
 
   render() {
-    const { fromCurrency, toCurrency, amount, results, error} = this.state;
+    const { fromCurrency, toCurrency, amount, results} = this.state;
 
-    return <div>
-    <SimpleInput  type="number" value={amount} onChange={this.handleChange} />
-    <CurrencyList name='fromCurrency' posts={currencies} value={fromCurrency} onChange={this.handleChange}/>
-    <CurrencyList name="toCurrency" posts={currencies} value={toCurrency} onChange={this.handleChange}/>
-    <SwapCurrencies onClick={this.swap} />
-    <Conversion results={results} />
-
-   </div>
+    return <div className="container-fluid">
+      <form>
+        <div className="row justify-content-center mt-5 pt-5">
+        <div className="col-xs-12 col-md-3">
+          <label>Amount</label>
+            <SimpleInput type="number" value={amount} placeholder="1.00" onChange={this.handleChange} />
+          </div>
+          <div className="col-xs-12 col-md-3">
+          <label>From</label>
+            <CurrencyList name='fromCurrency' list={currencies} value={fromCurrency} onChange={this.handleChange}/>
+          </div>
+          <div className="col-12 col-sm-2 text-center mt-4">
+            <SwapCurrencies onClick={this.swap} />
+          </div>
+          <div className="col-xs-12 col-md-3">
+          <label>To</label>
+            <CurrencyList name='toCurrency' list={currencies} value={toCurrency} onChange={this.handleChange}/>
+          </div>
+        </div>
+      </form>
+      <Conversion results={results} />
+    </div>
   }
 }
 

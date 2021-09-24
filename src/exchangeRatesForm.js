@@ -48,13 +48,29 @@ class CurrenciesExchangeList extends React.Component {
   }
 
   render() {
-    const { baseCurrency, amount, results, error, exchangeRates } = this.state;
+    const { baseCurrency, amount, exchangeRates } = this.state;
 
-    return <div>
-    <SimpleInput name='amount' value={amount} type='number' onChange={this.handleChange} />
-    <CurrencyList name='baseCurrency' posts={currencies} value={baseCurrency} onChange={this.handleChange} />
-    <ExchangeRates rates={exchangeRates}/>
-   </div>
+    return  <div className="container m-5">
+      <form>
+        <div className="row justify-content-center mt-4 pt-5">
+          <div className="col-4">
+            Amount
+            <SimpleInput name='amount' value={amount} type='number' onChange={this.handleChange} />
+          </div>
+          <div className="col-4">
+            Base currency
+            <CurrencyList name='baseCurrency' list={currencies} value={baseCurrency} onChange={this.handleChange} />
+          </div>
+        </div>
+      </form>
+      <div className="row justify-content-center exchangeRates">
+        <div className='col-4'>
+<ExchangeRates rates={exchangeRates}/>
+        </div>
+        
+      </div>
+     
+    </div>
   }
 }
 
