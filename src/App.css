@@ -1,24 +1,15 @@
 .navbar {
   padding: 25px;
   font-family: 'Yaldevi', sans-serif;
+  font-size: 20px;
+  color: black;
+    background-image: url(./images/legobackground.jpg);
 }
 
-.form-control {
-  font-family: 'Tomorrow', sans-serif;
-}
-
-.rate h4 span {
-  font-family: 'Fira Sans Extra Condensed', sans-serif;
-}
-.currencyConverter {
-  align-content: center;
-}
-
-label {
-  font-family: 'Gilda Display', serif;
-}
-
-.exchangeRates {
-  font-family: 'Fira Sans Extra Condensed', sans-serif;
-  font-size: 30px;
+img.footerImage {
+  z-index: -3;
+  position: fixed;
+  bottom: -8%;
+  width: 100%;
+  height: 100%;
 }

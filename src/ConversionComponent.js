@@ -1,4 +1,5 @@
 import React from "react";
+import './conversionComponent.css';
 
 const Conversion = (props) => {
   const {rates, amount, base} = props.results;

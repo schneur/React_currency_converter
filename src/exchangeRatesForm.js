@@ -3,6 +3,9 @@ import { json, checkStatus } from './utils';
 import { ExchangeRates } from './exchangeRatesComponent';
 import { CurrencyList } from './currenciesList';
 import { SimpleInput } from './simpleInput';
+import './exchangeRatesForm.css';
+import lego4 from './images/lego4.jpg';
+
 
 let currencies = ["USD","AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HKD","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","ZAR"];
 
@@ -51,6 +54,7 @@ class CurrenciesExchangeList extends React.Component {
     const { baseCurrency, amount, exchangeRates } = this.state;
 
     return  <div className="container m-5">
+      <img className='lego4' src={lego4} alt='lego people'/>
       <form>
         <div className="row justify-content-center mt-4 pt-5">
           <div className="col-4">
@@ -63,14 +67,12 @@ class CurrenciesExchangeList extends React.Component {
           </div>
         </div>
       </form>
-      <div className="row justify-content-center exchangeRates">
+      <div className="row justify-content-center exchangeRates mt-5 pt-3">
         <div className='col-4'>
-<ExchangeRates rates={exchangeRates}/>
+          <ExchangeRates rates={exchangeRates}/>
         </div>
-        
       </div>
-     
-    </div>
+     </div>
   }
 }
 

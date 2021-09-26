@@ -5,6 +5,8 @@ import { SimpleInput } from './simpleInput';
 import { SwapCurrencies } from './switchCurrencies';
 import { Conversion } from './ConversionComponent';
 import './currencyConverter.css';
+import lego1 from './images/lego1.jpg';
+import lego2 from './images/lego2.jpg';
 
 let currencies = ["USD","AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HKD","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","ZAR"];
 
@@ -61,7 +63,10 @@ class CurrencyConverter extends React.Component {
   render() {
     const { fromCurrency, toCurrency, amount, results} = this.state;
 
-    return <div className="container-fluid">
+    return <React.Fragment>
+    <img className='lego1' src={lego1} alt='lego people'/>
+    <img className='lego2' src={lego2} alt='lego people'/>
+    <div className="container-fluid">
       <form>
         <div className="row justify-content-center mt-5 pt-5">
         <div className="col-xs-12 col-md-3">
@@ -83,6 +88,7 @@ class CurrencyConverter extends React.Component {
       </form>
       <Conversion results={results} />
     </div>
+    </React.Fragment>
   }
 }
 

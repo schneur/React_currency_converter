@@ -2,3 +2,23 @@ a {
   color: black;
   text-decoration: none;
 }
+
+img.lego1 {
+  z-index: -1;
+  position: absolute;
+  right: 48%;
+  width: 40%;
+  bottom: 28%;
+}
+
+img.lego2 {
+  z-index: -1;
+  position: absolute;
+  right: 13%;
+  width: 25%;
+  bottom: 27%;
+}
+
+label {
+  font-family: 'Gilda Display', serif;
+}

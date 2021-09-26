@@ -1,4 +1,5 @@
 import React from 'react';
+import './simpleInput.css';
 
 const SimpleInput = (props) => {
   const { value, onChange, type } = props;
