@@ -58,11 +58,11 @@ class CurrenciesExchangeList extends React.Component {
       <form>
         <div className="row justify-content-center mt-4 pt-5">
           <div className="col-4">
-            Amount
+            <label>Amount</label>
             <SimpleInput name='amount' value={amount} type='number' onChange={this.handleChange} />
           </div>
           <div className="col-4">
-            Base currency
+            <label>Base currency</label>
             <CurrencyList name='baseCurrency' list={currencies} value={baseCurrency} onChange={this.handleChange} />
           </div>
         </div>

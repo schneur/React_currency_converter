@@ -1,15 +1,14 @@
 .navbar {
   padding: 25px;
-  font-family: 'Yaldevi', sans-serif;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: 'Balsamiq Sans', cursive;
   color: black;
-    background-image: url(./images/legobackground.jpg);
+  background-image: url(./images/legobackground.jpg);
 }
 
-img.footerImage {
-  z-index: -3;
-  position: fixed;
-  bottom: -8%;
-  width: 100%;
-  height: 100%;
+.navbar-brand {  
+  font-family: 'Permanent Marker', cursive;
+  font-size: 40px;
 }
+

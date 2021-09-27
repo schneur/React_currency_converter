@@ -6,3 +6,14 @@ img.lego4 {
   left: 35%;
   width: auto;
 }
+
+label {
+  font-family: 'Gilda Display', serif;
+  font-size: 26px;
+}
+
+@media (max-width: 767px) {
+  label {
+    font-size: 18px;
+  }
+}  

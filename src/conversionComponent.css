@@ -1,3 +1,8 @@
 .rate h4 span {
+  font-size: 25px;
   font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+.rate p {
+  font-size: 35px;
+  font-family: monospace;
 }

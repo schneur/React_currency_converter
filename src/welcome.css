@@ -1,0 +1,45 @@
+h1 span {
+  font-family: 'Permanent Marker', cursive;
+}
+
+h1 {
+  font-family: 'Bebas Neue', cursive;
+}
+
+img.lego6,
+img.lego7 {
+  z-index: -2;
+  position: fixed;
+  width: auto;
+  height: 53%;
+  top: 25%;
+}
+
+.lego6 {
+  left: 8%;
+}
+
+.lego7 {
+  right: 10%;
+}
+
+@media (max-width: 991px) {
+  img.lego6,
+  img.lego7 {
+    height: 40%;
+  }
+  .lego6 {
+    left: 3%;
+  }
+
+  .lego7 {
+    right: 4%;
+  }
+}
+
+@media (max-width: 767px) {
+  img.lego6,
+  img.lego7 {
+    height: 33%;
+  }
+}  
