@@ -64,7 +64,7 @@ class CurrencyConverter extends React.Component {
     const { fromCurrency, toCurrency, amount, results} = this.state;
 
     return <React.Fragment>
-      <div className='legoPeople'>   
+      <div className='legoPeople text-center'>   
         <img className='lego1' src={lego1} alt='lego people'/>
         <img className='lego2' src={lego2} alt='lego people'/>
       </div>
