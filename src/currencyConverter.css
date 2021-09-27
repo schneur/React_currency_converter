@@ -2,10 +2,12 @@ a {
   color: black;
   text-decoration: none;
 }
+.legoPeople {
+  position: fixed;
+}
 
 img.lego1 {
   z-index: -1;
-  position: absolute;
   right: 48%;
   width: 40%;
   bottom: 28%;
@@ -13,7 +15,6 @@ img.lego1 {
 
 img.lego2 {
   z-index: -1;
-  position: absolute;
   right: 13%;
   width: 25%;
   bottom: 27%;
