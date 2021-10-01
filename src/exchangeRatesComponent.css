@@ -2,3 +2,15 @@
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-size: 30px;
 }
+
+@media (max-width: 991px) {
+  .exchangeRates {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .exchangeRates {
+    font-size: 10px;
+  }
+}  

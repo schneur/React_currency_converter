@@ -53,7 +53,7 @@ class CurrenciesExchangeList extends React.Component {
   render() {
     const { baseCurrency, amount, exchangeRates } = this.state;
 
-    return  <div className="container m-5">
+    return  <div className="container">
       <img className='lego4' src={lego4} alt='lego people'/>
       <form>
         <div className="row justify-content-center mt-4 pt-5">
@@ -69,6 +69,7 @@ class CurrenciesExchangeList extends React.Component {
       </form>
       <div className="row justify-content-center exchangeRates mt-5 pt-3">
         <div className='col-4'>
+          <h3 className="text-center">Rates</h3>
           <ExchangeRates rates={exchangeRates}/>
         </div>
       </div>

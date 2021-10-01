@@ -12,8 +12,28 @@ label {
   font-size: 26px;
 }
 
+
+
+@media (max-width: 991px) {
+  
+  img.lego4 {
+    height: 34%;
+    top: 30%;
+    left: 5%;
+  }
+}
+
 @media (max-width: 767px) {
   label {
     font-size: 10px;
   }
+
+  img.lego4 {
+    height: 24%;
+    top: 30%;
+    left: 10%;
+  }
 }  
+
+
+

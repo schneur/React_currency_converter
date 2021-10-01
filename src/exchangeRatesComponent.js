@@ -11,14 +11,14 @@ const ExchangeRates = (props) => {
 
   const content = Object.keys(rates).map((current,index) =>
    
-  <div className="col-12 col-sm-6" key={current}>
+  <div className="col-6" key={current}>
     <p>{current} : {rates[current].toFixed(2)}</p>
     <hr/>
   </div>
 );
 
   return (
-    <div className='row justify-content-center bg-light border rounded border-success pt-5 mt-5'>
+    <div className='row justify-content-center bg-light border rounded border-success pt-2 mt-3'>
       {content}
     </div>
   );
