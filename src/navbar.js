@@ -6,7 +6,7 @@ const Navbar = (props) => {
   
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-    <Link to='/'><div className="navbar-brand">LegoPal</div></Link>
+    <Link to='/'><div className="navbar-brand">Legorates</div></Link>
     <button className="navbar-toggler bg-warning border border-success" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
     </button>
