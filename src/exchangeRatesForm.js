@@ -6,9 +6,6 @@ import { SimpleInput } from './simpleInput';
 import './exchangeRatesForm.css';
 import lego4 from './images/lego4.jpg';
 
-
-let currencies = ["USD","AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HKD","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","ZAR"];
-
 class CurrenciesExchangeList extends React.Component {
   constructor(props) {
     super(props);
@@ -63,7 +60,7 @@ class CurrenciesExchangeList extends React.Component {
           </div>
           <div className="col-4">
             <label>Base currency</label>
-            <CurrencyList name='baseCurrency' list={currencies} value={baseCurrency} onChange={this.handleChange} />
+            <CurrencyList name='baseCurrency' value={baseCurrency} onChange={this.handleChange} />
           </div>
         </div>
       </form>

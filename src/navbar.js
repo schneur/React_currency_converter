@@ -16,7 +16,7 @@ const Navbar = (props) => {
           <Link className="nav-link mt-1" to="/currencyConverter">Currency converter</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link mt-1" to="/about/">Exchange rates</Link>
+          <Link className="nav-link mt-1" to="/ExchangeRates/">Exchange rates</Link>
         </li>
       </ul>
     </div>

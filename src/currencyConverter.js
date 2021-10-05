@@ -8,11 +8,10 @@ import './currencyConverter.css';
 import lego1 from './images/lego1.jpg';
 import lego2 from './images/lego2.jpg';
 
-let currencies = ["USD","AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HKD","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","ZAR"];
-
 class CurrencyConverter extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       amount: 1,
       fromCurrency: 'USD',
@@ -33,7 +32,7 @@ class CurrencyConverter extends React.Component {
   }
 
   convert() {
-    let {amount,  fromCurrency, toCurrency } = this.state;
+    const {amount,  fromCurrency, toCurrency } = this.state;
     fetch(`https://altexchangerateapi.herokuapp.com/latest?&amount=${amount}&from=${fromCurrency}&to=${toCurrency}`)
     .then(checkStatus)
     .then(json)
@@ -52,7 +51,7 @@ class CurrencyConverter extends React.Component {
   swap(event) {
     event.preventDefault();
     let {fromCurrency, toCurrency} = this.state;
-    this.setState({"fromCurrency": [toCurrency], "toCurrency": [fromCurrency]}, this.convert)
+    this.setState({"fromCurrency": [toCurrency], "toCurrency": [fromCurrency]}, this.convert);
   }
 
   handleChange(event) {
@@ -77,14 +76,14 @@ class CurrencyConverter extends React.Component {
           </div>
           <div className="col-xs-12 col-md-3">
           <label>From</label>
-            <CurrencyList name='fromCurrency' list={currencies} value={fromCurrency} onChange={this.handleChange}/>
+            <CurrencyList name='fromCurrency' value={fromCurrency} onChange={this.handleChange}/>
           </div>
           <div className="col-12 col-sm-2 text-center mt-4">
             <SwapCurrencies onClick={this.swap} />
           </div>
           <div className="col-xs-12 col-md-3">
           <label>To</label>
-            <CurrencyList name='toCurrency' list={currencies} value={toCurrency} onChange={this.handleChange}/>
+            <CurrencyList name='toCurrency' value={toCurrency} onChange={this.handleChange}/>
           </div>
         </div>
       </form>
