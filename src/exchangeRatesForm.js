@@ -9,12 +9,15 @@ import lego4 from './images/lego4.jpg';
 class CurrenciesExchangeList extends React.Component {
   constructor(props) {
     super(props);
+
+    const params = new URLSearchParams(props.location.search);
+
     this.state = {
       amount: 1,
       error: '',
       results: [],
       exchangeRates: '',
-      baseCurrency: 'USD',
+      baseCurrency: params.get('base') ||'USD',
     };
 
     this.handleChange = this.handleChange.bind(this);

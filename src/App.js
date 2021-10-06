@@ -5,7 +5,6 @@ import Home from './welcomePage';
 import ExchangeRates from './exchangeRatesForm';
 import Footer from './footer'
 import Navbar from './navbar';
-import Chart from './chart';
 
 const NotFound = () => {
   return <h2>404 Not Found</h2>;
@@ -19,7 +18,6 @@ const App = () => {
         <Route path="/" exact component={Home} />
         <Route path="/currencyConverter" component={currencyConverter} />
         <Route path="/exchangeRates/" component={ExchangeRates} />
-        <Route path="/chart" component={Chart} />
         <Route component={NotFound} />
       </Switch>
       <Footer/>

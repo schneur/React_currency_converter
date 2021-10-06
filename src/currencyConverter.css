@@ -23,3 +23,8 @@ label {
   font-family: 'Gilda Display', serif;
   font-size: 26px;
 }
+
+.text {
+  font-size: 25px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}

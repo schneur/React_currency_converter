@@ -11,7 +11,7 @@ const Conversion = (props) => {
 
   const rate = Object.keys(rates).map((post,index) =>
   <div key={post}>
-    <Link to={`/chart?base=${base}&quote=${post}`}><p><span>{amount} Dollar(s) in {base} is </span> {rates[post].toFixed(2)} {post} </p></Link>
+    <Link to={`/exchangeRates?base=${base}&quote=${post}`}><p><span>{amount} Dollar(s) in {base} is </span> {rates[post].toFixed(2)} {post} </p></Link>
   </div>
   );
   
